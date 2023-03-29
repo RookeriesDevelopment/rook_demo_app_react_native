@@ -17,7 +17,9 @@
     "react-native": "0.71.4",
     "react-native-safe-area-context": "^4.5.0",
     "react-native-screens": "^3.20.0",
-    "rook_health_connect": "^0.2.2"
+    "rook_health_connect": "^0.2.4",
+    "rook_transmission": "^0.1.2",
+    "rook_users": "^0.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

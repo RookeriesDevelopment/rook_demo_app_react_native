@@ -162,6 +162,7 @@ dependencies {
 
     implementation project(":react-native-shared-preferences")
     implementation "com.rookmotion.android:rook-rn-health-connect:0.3.1"
+    implementation 'com.rookmotion.android:rook-rn-transmission:0.1.1'
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}")
     debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {

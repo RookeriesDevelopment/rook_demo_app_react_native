@@ -1,10 +1,23 @@
-import React, {useState} from 'react';
-import {View, Text, Button, TextInput} from 'react-native';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useState, useEffect} from 'react';
+import {
+  View,
+  Text,
+  Button,
+  TextInput,
+  SafeAreaView,
+  StyleSheet,
+} from 'react-native';
 import {useRookHCBody} from 'rook_health_connect';
+import {BodyTransmission} from '../components/BodyTransmission';
+import {useUser} from '../hooks/useUser';
 
 export const BodyView = () => {
   const [date, setDate] = useState('');
   const [data, setData] = useState('{}');
+  const [userID, setUserID] = useState('');
+
+  const {checkUserID} = useUser({user: 'example@gmail.com'});
 
   const {
     getBodySummaryLastDate,
@@ -12,6 +25,12 @@ export const BodyView = () => {
     requestBodyPermissions,
     getBodySummary,
   } = useRookHCBody();
+
+  useEffect(() => {
+    checkUserID()
+      .then(id => setUserID(id))
+      .catch(console.log);
+  }, []);
 
   const handlePress = async (): Promise<void> => {
     try {
@@ -49,20 +68,33 @@ export const BodyView = () => {
   };
 
   return (
-    <View>
-      <Text>body</Text>
-      <TextInput
-        placeholder="YYYY-MM-DD"
-        onChangeText={text => setDate(text)}
-      />
-      <Button title="last Date" onPress={handlePress} />
-      <Button title="hasAllPermissions" onPress={handlePermissions} />
-      <Button
-        title="requestAllPermissions"
-        onPress={handleRequestPermissions}
-      />
-      <Button title="get summary" onPress={handleOpen} />
-      <Text>{data}</Text>
-    </View>
+    <SafeAreaView>
+      <View style={styles.mb}>
+        <Text>body</Text>
+        <TextInput
+          placeholder="YYYY-MM-DD"
+          onChangeText={text => setDate(text)}
+        />
+        <Button title="last Date" onPress={handlePress} />
+        <Button title="hasAllPermissions" onPress={handlePermissions} />
+        <Button
+          title="requestAllPermissions"
+          onPress={handleRequestPermissions}
+        />
+        <Button title="get summary" onPress={handleOpen} />
+        <Text style={styles.blacked}>{data}</Text>
+      </View>
+
+      {userID && <BodyTransmission date={date} userID={userID} />}
+    </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  mb: {
+    marginBottom: 10,
+  },
+  blacked: {
+    color: 'black',
+  },
+});

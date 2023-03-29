@@ -1,6 +1,8 @@
 package com.rook_rn_app_demo_hc;
 
 import android.app.Application;
+
+import com.example.rnrookextraction.RNRookTransmissionPackager;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
@@ -30,6 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
           // Packages that cannot be autolinked yet can be added manually here, for example:
           packages.add(new RNSharedPreferencesReactPackage());
           packages.add(new RNRookHCPackager());
+          packages.add(new RNRookTransmissionPackager());
           return packages;
         }
 
