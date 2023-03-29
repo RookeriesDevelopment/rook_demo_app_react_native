@@ -1,10 +1,16 @@
-import React, {useState} from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useState, useEffect} from 'react';
 import {View, Text, Button, TextInput} from 'react-native';
 import {useRookHCSleep} from 'rook_health_connect';
+import {SleepTransmission} from '../components/SleepTransmission';
+import {useUser} from '../hooks/useUser';
 
 export const SleepView = () => {
   const [date, setDate] = useState('');
   const [data, setData] = useState('{}');
+  const [userID, setUserID] = useState('');
+
+  const {checkUserID} = useUser({user: 'example@gmail.com'});
 
   const {
     getSleepSummaryLastDate,
@@ -12,6 +18,12 @@ export const SleepView = () => {
     requestSleepPermissions,
     getSleepSummary,
   } = useRookHCSleep();
+
+  useEffect(() => {
+    checkUserID()
+      .then(id => setUserID(id))
+      .catch(console.log);
+  }, []);
 
   const handlePress = async (): Promise<void> => {
     try {
@@ -63,6 +75,8 @@ export const SleepView = () => {
       />
       <Button title="get summary" onPress={handleOpen} />
       <Text>{data}</Text>
+
+      <SleepTransmission date={date} userID={userID} />
     </View>
   );
 };

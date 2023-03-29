@@ -1,10 +1,16 @@
-import React, {useState} from 'react';
-import {View, Text, Button, TextInput} from 'react-native';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useState, useEffect} from 'react';
+import {View, Text, Button, TextInput, SafeAreaView} from 'react-native';
 import {useRookHCPhysical} from 'rook_health_connect';
+import {PhysicalTransmission} from '../components/PhysicalTransmission';
+import {useUser} from '../hooks/useUser';
 
 export const PhysicalView = () => {
   const [data, setData] = useState('{}');
   const [date, setDate] = useState('');
+  const [userID, setUserID] = useState('');
+
+  const {checkUserID} = useUser({user: 'example@gmail.com'});
 
   const {
     getPhysicalSummaryLastDate,
@@ -14,6 +20,12 @@ export const PhysicalView = () => {
     getPhysicalSummary,
     getPhysicalEvents,
   } = useRookHCPhysical();
+
+  useEffect(() => {
+    checkUserID()
+      .then(id => setUserID(id))
+      .catch(console.log);
+  }, []);
 
   const handlePress = async (): Promise<void> => {
     try {
@@ -69,22 +81,25 @@ export const PhysicalView = () => {
   };
 
   return (
-    <View>
-      <Text>Physical</Text>
-      <TextInput
-        placeholder="YYYY-MM-DD"
-        onChangeText={text => setDate(text)}
-      />
-      <Button title="last Date" onPress={handlePress} />
-      <Button title="last Date event" onPress={handlePressEvent} />
-      <Button title="hasAllPermissions" onPress={handlePermissions} />
-      <Button
-        title="requestAllPermissions"
-        onPress={handleRequestPermissions}
-      />
-      <Button title="get summary" onPress={handleOpen} />
-      <Button title="get summary event" onPress={handleEventSummary} />
-      <Text>{data}</Text>
-    </View>
+    <SafeAreaView>
+      <View>
+        <Text>Physical</Text>
+        <TextInput
+          placeholder="YYYY-MM-DD"
+          onChangeText={text => setDate(text)}
+        />
+        <Button title="last Date" onPress={handlePress} />
+        <Button title="last Date event" onPress={handlePressEvent} />
+        <Button title="hasAllPermissions" onPress={handlePermissions} />
+        <Button
+          title="requestAllPermissions"
+          onPress={handleRequestPermissions}
+        />
+        <Button title="get summary" onPress={handleOpen} />
+        <Button title="get summary event" onPress={handleEventSummary} />
+        <Text>{data}</Text>
+      </View>
+      <PhysicalTransmission date={date} userID={userID} />
+    </SafeAreaView>
   );
 };
