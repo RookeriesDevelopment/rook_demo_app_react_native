@@ -161,7 +161,7 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
 
     implementation project(":react-native-shared-preferences")
-    implementation "com.rookmotion.android:rook-rn-health-connect:0.3.1"
+    implementation "com.rookmotion.android:rook-rn-health-connect:0.3.2"
     implementation 'com.rookmotion.android:rook-rn-transmission:0.1.1'
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}")

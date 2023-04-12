@@ -6172,10 +6172,10 @@ rook_transmission@^0.1.2:
   dependencies:
     rook_auth "^0.4.2"
 
-rook_users@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/rook_users/-/rook_users-0.1.2.tgz#65b0d4ea9693242d26723e55cfa7b7fd130dbd99"
-  integrity sha512-rm8Z0EUUnwiOF2ywt8/lrWse8vQG0kpmvZF6YQ5k9saTHfVUI8bYURYKVeC6yA3jcb8hXDPVK+JmoN/1l8fgJQ==
+rook_users@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/rook_users/-/rook_users-0.1.3.tgz#7255aa4ecae8e4629837b5d4d563407d0db81ddc"
+  integrity sha512-QaIHArRrDufAwTa5fC9iervV6fRQx7b+88rOwsAlQbPtd0ywrxfI2yAMJICgWM5eodyHXCK1DpsOULrkWQviYw==
   dependencies:
     "@react-native-async-storage/async-storage" "^1.17.12"
     axios "^1.3.4"
