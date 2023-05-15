@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, Button} from 'react-native';
-import {useRookHCPermissions} from 'rook_health_connect';
+import {useRookHCPermissions} from 'react-native-rook-health-connect';
 
 export const PermissionsView = () => {
   const [data, setData] = useState('');

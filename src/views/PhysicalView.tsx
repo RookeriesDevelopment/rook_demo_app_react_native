@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, Button, TextInput} from 'react-native';
-import {useRookHCPhysical} from 'rook_health_connect';
+import {useRookHCPhysical} from 'react-native-rook-health-connect';
 
 export const PhysicalView = () => {
   const [data, setData] = useState('{}');
