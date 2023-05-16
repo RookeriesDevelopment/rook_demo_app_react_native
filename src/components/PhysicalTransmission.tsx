@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react';
 import {Text, View, StyleSheet, Button} from 'react-native';
-import {useRookHCTransmission} from 'rook_transmission';
-import {useRookHCPhysical} from 'rook_health_connect';
+import {useRookHCTransmission} from 'react-native-rook-android-transmission';
+import {useRookHCPhysical} from 'react-native-rook-health-connect';
 
 type PhysicalTransmissionProps = {
   date: string;
