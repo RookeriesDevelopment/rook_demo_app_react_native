@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
 import {View, Text, Button, TextInput} from 'react-native';
-import {useRookHCSleep} from 'rook_health_connect';
 import {SleepTransmission} from '../components/SleepTransmission';
 import {useUser} from '../hooks/useUser';
+import {useRookHCSleep} from 'react-native-rook-health-connect';
 
 export const SleepView = () => {
   const [date, setDate] = useState('');

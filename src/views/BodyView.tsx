@@ -8,9 +8,9 @@ import {
   SafeAreaView,
   StyleSheet,
 } from 'react-native';
-import {useRookHCBody} from 'rook_health_connect';
 import {BodyTransmission} from '../components/BodyTransmission';
 import {useUser} from '../hooks/useUser';
+import {useRookHCBody} from 'react-native-rook-health-connect';
 
 export const BodyView = () => {
   const [date, setDate] = useState('');
