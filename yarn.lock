@@ -5930,10 +5930,10 @@ react-native-json-tree@^1.3.0:
     prop-types "^15.7.2"
     react-base16-styling "^0.8.0"
 
-react-native-rook-health-connect@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/react-native-rook-health-connect/-/react-native-rook-health-connect-0.2.0.tgz#ee66f41bb1da892a471c8ce21e5b46a35b46585d"
-  integrity sha512-25npQgtYpRhdXMvTstgrUuPbledE45wN09Qc1uavjNCGvyFF3MN0vcA8LDvgbdm+7XMEYxTEFKrkHCZf2sMUqA==
+react-native-rook-health-connect@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-rook-health-connect/-/react-native-rook-health-connect-0.2.2.tgz#22d171088f8411dcc9f97edeba300930a1268044"
+  integrity sha512-KIWdC6m875x6wq9fY+tPs1GDM5lMXtmwOLdxlFGICLl2RRX1uSCvJyQ0ZTRKGJ0fZih+CIe5UxGDBZ86kHoakQ==
   dependencies:
     rook_auth "^0.4.2"
 
