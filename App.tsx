@@ -4,6 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   BodyView,
+  EventsView,
   OptionsView,
   PermissionsView,
   PhysicalView,
@@ -27,6 +28,7 @@ function App() {
           <Stack.Screen name="Body" component={BodyView} />
           <Stack.Screen name="Physical" component={PhysicalView} />
           <Stack.Screen name="Sleep" component={SleepView} />
+          <Stack.Screen name="Events" component={EventsView} />
         </Stack.Navigator>
       </NavigationContainer>
     </RookConnectProvider>

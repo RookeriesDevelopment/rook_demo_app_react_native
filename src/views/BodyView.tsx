@@ -1,10 +1,14 @@
 import React, {useState} from 'react';
-import {View, Text, Button, TextInput} from 'react-native';
+import {Text, Button, TextInput, ScrollView} from 'react-native';
 import {useRookHCBody} from 'react-native-rook-health-connect';
+import JSONTree from 'react-native-json-tree';
+
+import {styles} from '../styles/app';
+import object2Map from '../utils/object2Map';
 
 export const BodyView = () => {
   const [date, setDate] = useState('');
-  const [data, setData] = useState('{}');
+  const [data, setData] = useState<string | Map<string, any>>('');
 
   const {
     getBodySummaryLastDate,
@@ -42,14 +46,14 @@ export const BodyView = () => {
   const handleOpen = async (): Promise<void> => {
     try {
       const r = await getBodySummary(date);
-      setData(JSON.stringify(r));
+      setData(object2Map(r));
     } catch (error) {
       setData(`${error}`);
     }
   };
 
   return (
-    <View>
+    <ScrollView style={styles.bg}>
       <Text>body</Text>
       <TextInput
         placeholder="YYYY-MM-DD"
@@ -62,7 +66,7 @@ export const BodyView = () => {
         onPress={handleRequestPermissions}
       />
       <Button title="get summary" onPress={handleOpen} />
-      <Text>{data}</Text>
-    </View>
+      <JSONTree data={data} />
+    </ScrollView>
   );
 };

@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
-import {View, Text, Button, TextInput} from 'react-native';
+import {Text, Button, TextInput, ScrollView} from 'react-native';
 import {useRookHCSleep} from 'react-native-rook-health-connect';
+import {styles} from '../styles/app';
+import JSONTree from 'react-native-json-tree';
+import object2Map from '../utils/object2Map';
 
 export const SleepView = () => {
   const [date, setDate] = useState('');
-  const [data, setData] = useState('{}');
+  const [data, setData] = useState<string | Map<string, any>>('');
 
   const {
     getSleepSummaryLastDate,
@@ -42,14 +45,14 @@ export const SleepView = () => {
   const handleOpen = async (): Promise<void> => {
     try {
       const r = await getSleepSummary(date);
-      setData(JSON.stringify(r));
+      setData(object2Map(r));
     } catch (error) {
       setData(`${error}`);
     }
   };
 
   return (
-    <View>
+    <ScrollView style={styles.bg}>
       <Text>sleep</Text>
       <TextInput
         placeholder="YYYY-MM-DD"
@@ -62,7 +65,7 @@ export const SleepView = () => {
         onPress={handleRequestPermissions}
       />
       <Button title="get summary" onPress={handleOpen} />
-      <Text>{data}</Text>
-    </View>
+      <JSONTree data={data} />
+    </ScrollView>
   );
 };

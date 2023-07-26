@@ -1,9 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, Button, TextInput} from 'react-native';
+import {Text, Button, TextInput, ScrollView} from 'react-native';
 import {useRookHCPhysical} from 'react-native-rook-health-connect';
+import JSONTree from 'react-native-json-tree';
+import object2Map from '../utils/object2Map';
+import {styles} from '../styles/app';
 
 export const PhysicalView = () => {
-  const [data, setData] = useState('{}');
+  const [data, setData] = useState<string | Map<string, any>>('');
   const [date, setDate] = useState('');
 
   const {
@@ -53,7 +56,7 @@ export const PhysicalView = () => {
   const handleOpen = async (): Promise<void> => {
     try {
       const r = await getPhysicalSummary(date);
-      setData(JSON.stringify(r));
+      setData(object2Map(r));
     } catch (error) {
       setData(`${error}`);
     }
@@ -62,14 +65,14 @@ export const PhysicalView = () => {
   const handleEventSummary = async (): Promise<void> => {
     try {
       const r = await getPhysicalEvents(date);
-      setData(JSON.stringify(r));
+      setData(object2Map(r));
     } catch (error) {
       setData(`${error}`);
     }
   };
 
   return (
-    <View>
+    <ScrollView style={styles.bg}>
       <Text>Physical</Text>
       <TextInput
         placeholder="YYYY-MM-DD"
@@ -84,7 +87,7 @@ export const PhysicalView = () => {
       />
       <Button title="get summary" onPress={handleOpen} />
       <Button title="get summary event" onPress={handleEventSummary} />
-      <Text>{data}</Text>
-    </View>
+      <JSONTree data={data} />
+    </ScrollView>
   );
 };

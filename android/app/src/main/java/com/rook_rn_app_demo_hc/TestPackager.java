@@ -6,7 +6,6 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
-import com.rook.rnrookhealthconnect.RNRookHC;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,7 +23,7 @@ public class TestPackager implements ReactPackage {
             ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
         System.out.println(Build.VERSION.SDK_INT >= Build.VERSION_CODES.P);
-        modules.add(new RNRookHC(reactContext));
+        // modules.add(new RNRookHC(reactContext));
 
         return modules;
     }
