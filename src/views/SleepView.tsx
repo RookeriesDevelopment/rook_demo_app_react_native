@@ -53,8 +53,10 @@ export const SleepView = () => {
 
   return (
     <ScrollView style={styles.bg}>
-      <Text>sleep</Text>
+      <Text style={styles.whiteText}>sleep</Text>
       <TextInput
+        style={styles.whiteText}
+        placeholderTextColor="white"
         placeholder="YYYY-MM-DD"
         onChangeText={text => setDate(text)}
       />

@@ -8,4 +8,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#171821',
     flex: 1,
   },
+  whiteText: {
+    color: 'white',
+  },
 });

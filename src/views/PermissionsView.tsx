@@ -49,7 +49,7 @@ export const PermissionsView = () => {
 
   return (
     <View>
-      <Text>Hola</Text>
+      <Text>Permissions</Text>
       <Button title="Availability" onPress={handlePress} />
       <Button title="hasAllPermissions" onPress={handlePermissions} />
       <Button

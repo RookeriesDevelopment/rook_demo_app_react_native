@@ -113,9 +113,11 @@ export const EventsView = () => {
 
   return (
     <ScrollView style={styles.bg}>
-      <Text>Events</Text>
+      <Text style={styles.whiteText}>Events</Text>
       <TextInput
+        style={styles.whiteText}
         placeholder="YYYY-MM-DD"
+        placeholderTextColor="white"
         onChangeText={text => setDate(text)}
       />
       <Button title="Blood Glucose Event" onPress={handlePress} />

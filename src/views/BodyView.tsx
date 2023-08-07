@@ -54,9 +54,11 @@ export const BodyView = () => {
 
   return (
     <ScrollView style={styles.bg}>
-      <Text>body</Text>
+      <Text style={styles.whiteText}>body</Text>
       <TextInput
         placeholder="YYYY-MM-DD"
+        style={styles.whiteText}
+        placeholderTextColor="white"
         onChangeText={text => setDate(text)}
       />
       <Button title="last Date" onPress={handlePress} />

@@ -73,9 +73,11 @@ export const PhysicalView = () => {
 
   return (
     <ScrollView style={styles.bg}>
-      <Text>Physical</Text>
+      <Text style={styles.whiteText}>Physical</Text>
       <TextInput
+        style={styles.whiteText}
         placeholder="YYYY-MM-DD"
+        placeholderTextColor="white"
         onChangeText={text => setDate(text)}
       />
       <Button title="last Date" onPress={handlePress} />
