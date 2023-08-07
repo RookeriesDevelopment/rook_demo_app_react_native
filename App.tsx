@@ -10,6 +10,11 @@ import {
   PermissionsView,
   PhysicalView,
   SleepView,
+  TransmissionOptionsView,
+  BodyTransmissionView,
+  PhysicalTransmissionView,
+  SleepTransmissionView,
+  EventsTransmissionView,
 } from './src/views';
 
 const Stack = createNativeStackNavigator();
@@ -31,12 +36,34 @@ function App() {
             headerTintColor: 'white', // Cambiar color de texto
           }}>
           <Stack.Screen name="Home" component={HomeView} />
+
           <Stack.Screen name="Extraction" component={OptionsView} />
           <Stack.Screen name="Permissions" component={PermissionsView} />
           <Stack.Screen name="Body" component={BodyView} />
           <Stack.Screen name="Physical" component={PhysicalView} />
           <Stack.Screen name="Sleep" component={SleepView} />
           <Stack.Screen name="Events" component={EventsView} />
+
+          <Stack.Screen
+            name="Transmission"
+            component={TransmissionOptionsView}
+          />
+          <Stack.Screen
+            name="Body Transmission"
+            component={BodyTransmissionView}
+          />
+          <Stack.Screen
+            name="Physical Transmission"
+            component={PhysicalTransmissionView}
+          />
+          <Stack.Screen
+            name="Sleep Transmission"
+            component={SleepTransmissionView}
+          />
+          <Stack.Screen
+            name="Events Transmission"
+            component={EventsTransmissionView}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </RookConnectProvider>

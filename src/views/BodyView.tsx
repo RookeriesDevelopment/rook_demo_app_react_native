@@ -14,7 +14,6 @@ import object2Map from '../utils/object2Map';
 
 export const BodyView = () => {
   const [date, setDate] = useState('');
-
   const [data, setData] = useState<string | Map<string, any>>('');
 
   const {

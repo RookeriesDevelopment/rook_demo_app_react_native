@@ -9,7 +9,7 @@ export const HomeView = () => {
       <Link to={{screen: 'Extraction'}} style={styles.button}>
         Extraction
       </Link>
-      <Link to={{screen: 'HealthConnectOptions'}} style={styles.button}>
+      <Link to={{screen: 'Transmission'}} style={styles.button}>
         Transmission
       </Link>
     </SafeAreaView>
