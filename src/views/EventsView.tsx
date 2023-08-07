@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {Text, Button, ScrollView, TextInput} from 'react-native';
+import {
+  Text,
+  ScrollView,
+  TextInput,
+  View,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import {useRookHCEvents} from 'react-native-rook-health-connect';
 import JSONTree from 'react-native-json-tree';
 import object2Map from '../utils/object2Map';
@@ -26,7 +32,7 @@ export const EventsView = () => {
       const result = await getBodyBloodGlucoseEvents(date);
       setData(object2Map(result));
     } catch (error) {
-      console.log(error);
+      setData(`${error}`);
     }
   };
 
@@ -35,7 +41,7 @@ export const EventsView = () => {
       const result = await getBodyBloodPressureEvents(date);
       setData(object2Map(result));
     } catch (error) {
-      console.log(error);
+      setData(`${error}`);
     }
   };
 
@@ -44,7 +50,7 @@ export const EventsView = () => {
       const result = await getBodyMetricsEvents(date);
       setData(object2Map(result));
     } catch (error) {
-      console.log(error);
+      setData(`${error}`);
     }
   };
 
@@ -53,7 +59,7 @@ export const EventsView = () => {
       const result = await getBodyHeartRateEvents(date);
       setData(object2Map(result));
     } catch (error) {
-      console.log(error);
+      setData(`${error}`);
     }
   };
 
@@ -62,7 +68,7 @@ export const EventsView = () => {
       const result = await getBodyHydrationEvents(date);
       setData(object2Map(result));
     } catch (error) {
-      console.log(error);
+      setData(`${error}`);
     }
   };
 
@@ -71,7 +77,7 @@ export const EventsView = () => {
       const result = await getBodyMoodEvents(date);
       setData(object2Map(result));
     } catch (error) {
-      console.log(error);
+      setData(`${error}`);
     }
   };
 
@@ -80,7 +86,7 @@ export const EventsView = () => {
       const result = await getBodyNutritionEvents(date);
       setData(object2Map(result));
     } catch (error) {
-      console.log(error);
+      setData(`${error}`);
     }
   };
 
@@ -89,7 +95,7 @@ export const EventsView = () => {
       const result = await getBodyOxygenationEvents(date);
       setData(object2Map(result));
     } catch (error) {
-      console.log(error);
+      setData(`${error}`);
     }
   };
 
@@ -98,7 +104,7 @@ export const EventsView = () => {
       const result = await getPhysicalStressEvents(date);
       setData(object2Map(result));
     } catch (error) {
-      console.log(error);
+      setData(`${error}`);
     }
   };
 
@@ -107,39 +113,84 @@ export const EventsView = () => {
       const result = await getBodyTemperatureEvents(date);
       setData(object2Map(result));
     } catch (error) {
-      console.log(error);
+      setData(`${error}`);
     }
   };
 
   return (
     <ScrollView style={styles.bg}>
-      <Text style={styles.whiteText}>Events</Text>
-      <TextInput
-        style={styles.whiteText}
-        placeholder="YYYY-MM-DD"
-        placeholderTextColor="white"
-        onChangeText={text => setDate(text)}
-      />
-      <Button title="Blood Glucose Event" onPress={handlePress} />
-      <Button title="Blood Pressure Event" onPress={handlePressureEvent} />
-      <Button title="Body Metrics Event" onPress={handleBodyMetricsEvent} />
-      <Button
-        title="Body HeartRate Event"
-        onPress={handleBodyHeartRateEvents}
-      />
-      <Button title="Hydration Events" onPress={handleBodyHydrationEvents} />
-      <Button title="Mood Events" onPress={handleBodyMoodEvents} />
-      <Button title="Nutrition Events" onPress={handleBodyNutritionEvents} />
-      <Button
-        title="Oxygenation Events"
-        onPress={handleBodyOxygenationEvents}
-      />
-      <Button title="Stress Events" onPress={handlePhysicalStressEvents} />
-      <Button
-        title="Temperature Events"
-        onPress={handlePhysicalTemperatureEvents}
-      />
-      <JSONTree data={data} />
+      <View style={styles.json}>
+        <TextInput
+          style={styles.whiteText}
+          placeholder="YYYY-MM-DD"
+          placeholderTextColor="white"
+          onChangeText={text => setDate(text)}
+        />
+      </View>
+
+      <TouchableWithoutFeedback onPress={handlePress}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>Blood Glucose Event</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handlePressureEvent}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>Blood Pressure Event</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handleBodyMetricsEvent}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>Body Metrics Event</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handleBodyHeartRateEvents}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>Body HeartRate Event</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handleBodyHydrationEvents}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>Hydration Events</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handleBodyMoodEvents}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>Mood Events</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handleBodyNutritionEvents}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>Nutrition Events</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handleBodyOxygenationEvents}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>Oxygenation Events</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handlePhysicalStressEvents}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>Stress Events</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handlePhysicalTemperatureEvents}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>Temperature Events</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <View style={styles.json}>
+        <JSONTree data={data} />
+      </View>
     </ScrollView>
   );
 };

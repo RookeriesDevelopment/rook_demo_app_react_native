@@ -5,6 +5,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   BodyView,
   EventsView,
+  HomeView,
   OptionsView,
   PermissionsView,
   PhysicalView,
@@ -22,8 +23,15 @@ function App() {
         password: 'YR9GoQ3mP0zey5nZ9w3WHQMvtvFvMdnefblx',
       }}>
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={OptionsView} />
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#171821', // Cambiar color de fondo
+            },
+            headerTintColor: 'white', // Cambiar color de texto
+          }}>
+          <Stack.Screen name="Home" component={HomeView} />
+          <Stack.Screen name="Extraction" component={OptionsView} />
           <Stack.Screen name="Permissions" component={PermissionsView} />
           <Stack.Screen name="Body" component={BodyView} />
           <Stack.Screen name="Physical" component={PhysicalView} />

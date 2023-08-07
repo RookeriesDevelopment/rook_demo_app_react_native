@@ -5930,10 +5930,17 @@ react-native-json-tree@^1.3.0:
     prop-types "^15.7.2"
     react-base16-styling "^0.8.0"
 
-react-native-rook-health-connect@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/react-native-rook-health-connect/-/react-native-rook-health-connect-0.2.2.tgz#22d171088f8411dcc9f97edeba300930a1268044"
-  integrity sha512-KIWdC6m875x6wq9fY+tPs1GDM5lMXtmwOLdxlFGICLl2RRX1uSCvJyQ0ZTRKGJ0fZih+CIe5UxGDBZ86kHoakQ==
+react-native-rook-android-transmission@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/react-native-rook-android-transmission/-/react-native-rook-android-transmission-0.2.4.tgz#bbd493739808c523579f72402346210d2d1a5ebd"
+  integrity sha512-D8stZ+zK3pM0dD8C8kHGKKFvJn61YwHujMvTiwEj16Uw+0cw3lKMofYJOkARg5APNuxMPW20G8Nq2nfVeDzjuA==
+  dependencies:
+    rook_auth "^0.4.2"
+
+react-native-rook-health-connect@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/react-native-rook-health-connect/-/react-native-rook-health-connect-0.2.7.tgz#caf710e78b34eaeb647c06b33dcc0c6bb7794639"
+  integrity sha512-M6B/XSpwMRmpbzu1FWGRbBaPQSr4WYf7fo7MbH236Jk84oAq4TX4ovoGPK92onY1IqMUk72xiaQl3Hh0ddPQOA==
   dependencies:
     rook_auth "^0.4.2"
 

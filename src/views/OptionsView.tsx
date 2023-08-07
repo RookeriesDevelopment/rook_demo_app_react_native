@@ -1,32 +1,26 @@
 import React from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {SafeAreaView, Button} from 'react-native';
+import {Link} from '@react-navigation/native';
+import {SafeAreaView} from 'react-native';
+import {styles} from '../styles/app';
 
 export const OptionsView = () => {
-  const navigation = useNavigation();
-
   return (
-    <SafeAreaView>
-      <Button
-        title="Permissions"
-        onPress={() => navigation.navigate('Permissions' as never, {} as never)}
-      />
-      <Button
-        title="Body"
-        onPress={() => navigation.navigate('Body' as never, {} as never)}
-      />
-      <Button
-        title="Physical"
-        onPress={() => navigation.navigate('Physical' as never, {} as never)}
-      />
-      <Button
-        title="Sleep"
-        onPress={() => navigation.navigate('Sleep' as never, {} as never)}
-      />
-      <Button
-        title="Events"
-        onPress={() => navigation.navigate('Events' as never, {} as never)}
-      />
+    <SafeAreaView style={[styles.bg, styles.container]}>
+      <Link to={{screen: 'Permissions'}} style={styles.button}>
+        Permissions
+      </Link>
+      <Link to={{screen: 'Body'}} style={styles.button}>
+        Body
+      </Link>
+      <Link to={{screen: 'Physical'}} style={styles.button}>
+        Physical
+      </Link>
+      <Link to={{screen: 'Sleep'}} style={styles.button}>
+        Sleep
+      </Link>
+      <Link to={{screen: 'Events'}} style={styles.button}>
+        Events
+      </Link>
     </SafeAreaView>
   );
 };

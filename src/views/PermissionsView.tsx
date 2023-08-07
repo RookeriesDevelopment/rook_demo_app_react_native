@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text, TouchableWithoutFeedback} from 'react-native';
 import {useRookHCPermissions} from 'react-native-rook-health-connect';
 import JSONTree from 'react-native-json-tree';
+import {styles} from '../styles/app';
 
 export const PermissionsView = () => {
   const [data, setData] = useState<string | Map<string, any>>('');
@@ -48,16 +49,35 @@ export const PermissionsView = () => {
   };
 
   return (
-    <View>
-      <Text>Permissions</Text>
-      <Button title="Availability" onPress={handlePress} />
-      <Button title="hasAllPermissions" onPress={handlePermissions} />
-      <Button
-        title="requestAllPermissions"
-        onPress={handleRequestPermissions}
-      />
-      <Button title="openHC" onPress={handleOpen} />
-      <JSONTree data={data} />
+    <View style={styles.bg}>
+      <Text style={styles.title}>Permissions</Text>
+      <TouchableWithoutFeedback onPress={handlePress}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>Availability</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handlePermissions}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>Has All Permissions</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handleRequestPermissions}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>requestAllPermissions</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handleOpen}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>openHC</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <View style={[styles.json]}>
+        <JSONTree data={data} />
+      </View>
     </View>
   );
 };

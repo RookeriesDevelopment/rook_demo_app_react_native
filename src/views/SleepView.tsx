@@ -1,7 +1,11 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, {useState, useEffect} from 'react';
-import {Text, Button, TextInput, ScrollView} from 'react-native';
-import {useUser} from '../hooks/useUser';
+import React, {useState} from 'react';
+import {
+  Text,
+  TextInput,
+  ScrollView,
+  View,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import {useRookHCSleep} from 'react-native-rook-health-connect';
 import {styles} from '../styles/app';
 import JSONTree from 'react-native-json-tree';
@@ -10,7 +14,6 @@ import object2Map from '../utils/object2Map';
 export const SleepView = () => {
   const [date, setDate] = useState('');
 
-  const {checkUserID} = useUser({user: 'example@gmail.com'});
   const [data, setData] = useState<string | Map<string, any>>('');
 
   const {
@@ -19,12 +22,6 @@ export const SleepView = () => {
     requestSleepPermissions,
     getSleepSummary,
   } = useRookHCSleep();
-
-  useEffect(() => {
-    checkUserID()
-      .then(id => setUserID(id))
-      .catch(console.log);
-  }, []);
 
   const handlePress = async (): Promise<void> => {
     try {
@@ -63,21 +60,42 @@ export const SleepView = () => {
 
   return (
     <ScrollView style={styles.bg}>
-      <Text style={styles.whiteText}>sleep</Text>
-      <TextInput
-        style={styles.whiteText}
-        placeholderTextColor="white"
-        placeholder="YYYY-MM-DD"
-        onChangeText={text => setDate(text)}
-      />
-      <Button title="last Date" onPress={handlePress} />
-      <Button title="hasAllPermissions" onPress={handlePermissions} />
-      <Button
-        title="requestAllPermissions"
-        onPress={handleRequestPermissions}
-      />
-      <Button title="get summary" onPress={handleOpen} />
-      <JSONTree data={data} />
+      <View style={styles.json}>
+        <TextInput
+          style={styles.whiteText}
+          placeholderTextColor="white"
+          placeholder="YYYY-MM-DD"
+          onChangeText={text => setDate(text)}
+        />
+      </View>
+
+      <TouchableWithoutFeedback onPress={handlePress}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>last Date</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handlePermissions}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>hasAllPermissions</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handleRequestPermissions}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>requestAllPermissions</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handleOpen}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>get summary</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <View style={styles.json}>
+        <JSONTree data={data} />
+      </View>
     </ScrollView>
   );
 };

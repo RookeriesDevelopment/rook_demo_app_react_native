@@ -1,7 +1,11 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, {useState, useEffect} from 'react';
-import {Text, Button, TextInput, ScrollView} from 'react-native';
-import {useUser} from '../hooks/useUser';
+import React, {useState} from 'react';
+import {
+  Text,
+  TextInput,
+  ScrollView,
+  View,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import {useRookHCPhysical} from 'react-native-rook-health-connect';
 import JSONTree from 'react-native-json-tree';
 import object2Map from '../utils/object2Map';
@@ -10,9 +14,6 @@ import {styles} from '../styles/app';
 export const PhysicalView = () => {
   const [data, setData] = useState<string | Map<string, any>>('');
   const [date, setDate] = useState('');
-  const [userID, setUserID] = useState('');
-
-  const {checkUserID} = useUser({user: 'example@gmail.com'});
 
   const {
     getPhysicalSummaryLastDate,
@@ -22,12 +23,6 @@ export const PhysicalView = () => {
     getPhysicalSummary,
     getPhysicalEvents,
   } = useRookHCPhysical();
-
-  useEffect(() => {
-    checkUserID()
-      .then(id => setUserID(id))
-      .catch(console.log);
-  }, []);
 
   const handlePress = async (): Promise<void> => {
     try {
@@ -84,23 +79,54 @@ export const PhysicalView = () => {
 
   return (
     <ScrollView style={styles.bg}>
-      <Text style={styles.whiteText}>Physical</Text>
-      <TextInput
-        style={styles.whiteText}
-        placeholder="YYYY-MM-DD"
-        placeholderTextColor="white"
-        onChangeText={text => setDate(text)}
-      />
-      <Button title="last Date" onPress={handlePress} />
-      <Button title="last Date event" onPress={handlePressEvent} />
-      <Button title="hasAllPermissions" onPress={handlePermissions} />
-      <Button
-        title="requestAllPermissions"
-        onPress={handleRequestPermissions}
-      />
-      <Button title="get summary" onPress={handleOpen} />
-      <Button title="get summary event" onPress={handleEventSummary} />
-      <JSONTree data={data} />
+      <View style={styles.json}>
+        <TextInput
+          style={styles.whiteText}
+          placeholder="YYYY-MM-DD"
+          placeholderTextColor="white"
+          onChangeText={text => setDate(text)}
+        />
+      </View>
+
+      <TouchableWithoutFeedback onPress={handlePress}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>last Date</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handlePressEvent}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>last Date event</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handlePermissions}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>hasAllPermissions</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handleRequestPermissions}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>requestAllPermissions</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handleOpen}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>get summary</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handleEventSummary}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>get summary event</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <View style={styles.json}>
+        <JSONTree data={data} />
+      </View>
     </ScrollView>
   );
 };

@@ -2,7 +2,6 @@ package com.rook_rn_app_demo_hc;
 
 import android.app.Application;
 
-import com.example.rnrookextraction.RNRookTransmissionPackager;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
