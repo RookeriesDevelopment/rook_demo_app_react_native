@@ -1,16 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
-import {View, Text, Button, TextInput} from 'react-native';
-import {SleepTransmission} from '../components/SleepTransmission';
+import {Text, Button, TextInput, ScrollView} from 'react-native';
 import {useUser} from '../hooks/useUser';
 import {useRookHCSleep} from 'react-native-rook-health-connect';
+import {styles} from '../styles/app';
+import JSONTree from 'react-native-json-tree';
+import object2Map from '../utils/object2Map';
 
 export const SleepView = () => {
   const [date, setDate] = useState('');
-  const [data, setData] = useState('{}');
-  const [userID, setUserID] = useState('');
 
   const {checkUserID} = useUser({user: 'example@gmail.com'});
+  const [data, setData] = useState<string | Map<string, any>>('');
 
   const {
     getSleepSummaryLastDate,
@@ -54,16 +55,18 @@ export const SleepView = () => {
   const handleOpen = async (): Promise<void> => {
     try {
       const r = await getSleepSummary(date);
-      setData(JSON.stringify(r));
+      setData(object2Map(r));
     } catch (error) {
       setData(`${error}`);
     }
   };
 
   return (
-    <View>
-      <Text>sleep</Text>
+    <ScrollView style={styles.bg}>
+      <Text style={styles.whiteText}>sleep</Text>
       <TextInput
+        style={styles.whiteText}
+        placeholderTextColor="white"
         placeholder="YYYY-MM-DD"
         onChangeText={text => setDate(text)}
       />
@@ -74,9 +77,7 @@ export const SleepView = () => {
         onPress={handleRequestPermissions}
       />
       <Button title="get summary" onPress={handleOpen} />
-      <Text>{data}</Text>
-
-      <SleepTransmission date={date} userID={userID} />
-    </View>
+      <JSONTree data={data} />
+    </ScrollView>
   );
 };

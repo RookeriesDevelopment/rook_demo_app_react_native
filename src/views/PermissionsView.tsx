@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import {View, Text, Button} from 'react-native';
 import {useRookHCPermissions} from 'react-native-rook-health-connect';
+import JSONTree from 'react-native-json-tree';
 
 export const PermissionsView = () => {
-  const [data, setData] = useState('');
+  const [data, setData] = useState<string | Map<string, any>>('');
 
   const {
     checkAvailability,
@@ -48,7 +49,7 @@ export const PermissionsView = () => {
 
   return (
     <View>
-      <Text>Hola</Text>
+      <Text>Permissions</Text>
       <Button title="Availability" onPress={handlePress} />
       <Button title="hasAllPermissions" onPress={handlePermissions} />
       <Button
@@ -56,7 +57,7 @@ export const PermissionsView = () => {
         onPress={handleRequestPermissions}
       />
       <Button title="openHC" onPress={handleOpen} />
-      <Text>{data}</Text>
+      <JSONTree data={data} />
     </View>
   );
 };

@@ -1,23 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  Button,
-  TextInput,
-  SafeAreaView,
-  StyleSheet,
-} from 'react-native';
-import {BodyTransmission} from '../components/BodyTransmission';
+import {ScrollView, Text, Button, TextInput} from 'react-native';
 import {useUser} from '../hooks/useUser';
 import {useRookHCBody} from 'react-native-rook-health-connect';
+import JSONTree from 'react-native-json-tree';
+
+import {styles} from '../styles/app';
+import object2Map from '../utils/object2Map';
 
 export const BodyView = () => {
   const [date, setDate] = useState('');
-  const [data, setData] = useState('{}');
   const [userID, setUserID] = useState('');
 
   const {checkUserID} = useUser({user: 'example@gmail.com'});
+  const [data, setData] = useState<string | Map<string, any>>('');
 
   const {
     getBodySummaryLastDate,
@@ -61,40 +57,29 @@ export const BodyView = () => {
   const handleOpen = async (): Promise<void> => {
     try {
       const r = await getBodySummary(date);
-      setData(JSON.stringify(r));
+      setData(object2Map(r));
     } catch (error) {
       setData(`${error}`);
     }
   };
 
   return (
-    <SafeAreaView>
-      <View style={styles.mb}>
-        <Text>body</Text>
-        <TextInput
-          placeholder="YYYY-MM-DD"
-          onChangeText={text => setDate(text)}
-        />
-        <Button title="last Date" onPress={handlePress} />
-        <Button title="hasAllPermissions" onPress={handlePermissions} />
-        <Button
-          title="requestAllPermissions"
-          onPress={handleRequestPermissions}
-        />
-        <Button title="get summary" onPress={handleOpen} />
-        <Text style={styles.blacked}>{data}</Text>
-      </View>
-
-      {userID && <BodyTransmission date={date} userID={userID} />}
-    </SafeAreaView>
+    <ScrollView style={styles.bg}>
+      <Text style={styles.whiteText}>body</Text>
+      <TextInput
+        placeholder="YYYY-MM-DD"
+        style={styles.whiteText}
+        placeholderTextColor="white"
+        onChangeText={text => setDate(text)}
+      />
+      <Button title="last Date" onPress={handlePress} />
+      <Button title="hasAllPermissions" onPress={handlePermissions} />
+      <Button
+        title="requestAllPermissions"
+        onPress={handleRequestPermissions}
+      />
+      <Button title="get summary" onPress={handleOpen} />
+      <JSONTree data={data} />
+    </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  mb: {
-    marginBottom: 10,
-  },
-  blacked: {
-    color: 'black',
-  },
-});

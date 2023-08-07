@@ -1,12 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
-import {View, Text, Button, TextInput, SafeAreaView} from 'react-native';
-import {PhysicalTransmission} from '../components/PhysicalTransmission';
+import {Text, Button, TextInput, ScrollView} from 'react-native';
 import {useUser} from '../hooks/useUser';
 import {useRookHCPhysical} from 'react-native-rook-health-connect';
+import JSONTree from 'react-native-json-tree';
+import object2Map from '../utils/object2Map';
+import {styles} from '../styles/app';
 
 export const PhysicalView = () => {
-  const [data, setData] = useState('{}');
+  const [data, setData] = useState<string | Map<string, any>>('');
   const [date, setDate] = useState('');
   const [userID, setUserID] = useState('');
 
@@ -65,7 +67,7 @@ export const PhysicalView = () => {
   const handleOpen = async (): Promise<void> => {
     try {
       const r = await getPhysicalSummary(date);
-      setData(JSON.stringify(r));
+      setData(object2Map(r));
     } catch (error) {
       setData(`${error}`);
     }
@@ -74,32 +76,31 @@ export const PhysicalView = () => {
   const handleEventSummary = async (): Promise<void> => {
     try {
       const r = await getPhysicalEvents(date);
-      setData(JSON.stringify(r));
+      setData(object2Map(r));
     } catch (error) {
       setData(`${error}`);
     }
   };
 
   return (
-    <SafeAreaView>
-      <View>
-        <Text>Physical</Text>
-        <TextInput
-          placeholder="YYYY-MM-DD"
-          onChangeText={text => setDate(text)}
-        />
-        <Button title="last Date" onPress={handlePress} />
-        <Button title="last Date event" onPress={handlePressEvent} />
-        <Button title="hasAllPermissions" onPress={handlePermissions} />
-        <Button
-          title="requestAllPermissions"
-          onPress={handleRequestPermissions}
-        />
-        <Button title="get summary" onPress={handleOpen} />
-        <Button title="get summary event" onPress={handleEventSummary} />
-        <Text>{data}</Text>
-      </View>
-      <PhysicalTransmission date={date} userID={userID} />
-    </SafeAreaView>
+    <ScrollView style={styles.bg}>
+      <Text style={styles.whiteText}>Physical</Text>
+      <TextInput
+        style={styles.whiteText}
+        placeholder="YYYY-MM-DD"
+        placeholderTextColor="white"
+        onChangeText={text => setDate(text)}
+      />
+      <Button title="last Date" onPress={handlePress} />
+      <Button title="last Date event" onPress={handlePressEvent} />
+      <Button title="hasAllPermissions" onPress={handlePermissions} />
+      <Button
+        title="requestAllPermissions"
+        onPress={handleRequestPermissions}
+      />
+      <Button title="get summary" onPress={handleOpen} />
+      <Button title="get summary event" onPress={handleEventSummary} />
+      <JSONTree data={data} />
+    </ScrollView>
   );
 };

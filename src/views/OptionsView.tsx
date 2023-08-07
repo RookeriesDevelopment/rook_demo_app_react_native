@@ -23,6 +23,10 @@ export const OptionsView = () => {
         title="Sleep"
         onPress={() => navigation.navigate('Sleep' as never, {} as never)}
       />
+      <Button
+        title="Events"
+        onPress={() => navigation.navigate('Events' as never, {} as never)}
+      />
     </SafeAreaView>
   );
 };
