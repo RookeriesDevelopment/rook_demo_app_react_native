@@ -1,11 +1,18 @@
 import React from 'react';
 import {Link} from '@react-navigation/native';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, Text, View} from 'react-native';
 import {styles} from '../styles/app';
+import {UpdateUserID} from '../components/UpdateUserID';
 
 export const TransmissionOptionsView = () => {
   return (
-    <SafeAreaView style={[styles.bg, styles.container]}>
+    <SafeAreaView style={[styles.bg]}>
+      <UpdateUserID />
+
+      <View style={styles.json}>
+        <Text style={styles.title}>Transmission Options</Text>
+      </View>
+
       <Link to={{screen: 'Permissions'}} style={styles.button}>
         Permissions
       </Link>

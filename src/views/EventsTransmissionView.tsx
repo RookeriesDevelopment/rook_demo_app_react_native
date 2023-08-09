@@ -10,7 +10,7 @@ export const EventsTransmissionView = () => {
 
   const [userID, setUserID] = useState('');
 
-  const {checkUserID} = useUser({user: 'example@gmail.com'});
+  const {checkUserID} = useUser();
 
   useEffect(() => {
     checkUserID()
