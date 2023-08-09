@@ -5930,10 +5930,10 @@ react-native-json-tree@^1.3.0:
     prop-types "^15.7.2"
     react-base16-styling "^0.8.0"
 
-react-native-rook-android-transmission@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/react-native-rook-android-transmission/-/react-native-rook-android-transmission-0.2.4.tgz#bbd493739808c523579f72402346210d2d1a5ebd"
-  integrity sha512-D8stZ+zK3pM0dD8C8kHGKKFvJn61YwHujMvTiwEj16Uw+0cw3lKMofYJOkARg5APNuxMPW20G8Nq2nfVeDzjuA==
+react-native-rook-android-transmission@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/react-native-rook-android-transmission/-/react-native-rook-android-transmission-0.2.5.tgz#48e66ed671d6ced17b6351845cdf180a8be11df9"
+  integrity sha512-fXh2V/rO+VmHA1ISK7J6O7nQQhRac38/QwyjZqEmlqlLbXTRqCpPBuexhrUIk2dVazeQz0om1Eu6dL0aYeqFNw==
   dependencies:
     rook_auth "^0.4.2"
 
