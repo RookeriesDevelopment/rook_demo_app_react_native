@@ -15,6 +15,7 @@ import {
   PhysicalTransmissionView,
   SleepTransmissionView,
   EventsTransmissionView,
+  TimezoneTransmissionView,
 } from './src/views';
 
 const Stack = createNativeStackNavigator();
@@ -63,6 +64,11 @@ function App() {
           <Stack.Screen
             name="Events Transmission"
             component={EventsTransmissionView}
+          />
+
+          <Stack.Screen
+            name="Timezone Transmission"
+            component={TimezoneTransmissionView}
           />
         </Stack.Navigator>
       </NavigationContainer>

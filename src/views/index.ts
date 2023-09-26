@@ -9,4 +9,5 @@ export {PhysicalTransmissionView} from './PhysicalTransmissionView';
 export {PhysicalView} from './PhysicalView';
 export {SleepTransmissionView} from './SleepTransmissionView';
 export {SleepView} from './SleepView';
+export {TimezoneTransmissionView} from './TimezoneTransmissionView';
 export {TransmissionOptionsView} from './TransmissionOptions';

@@ -3,6 +3,7 @@ import {View, Text, TouchableWithoutFeedback} from 'react-native';
 import {useRookHCPermissions} from 'react-native-rook-health-connect';
 import JSONTree from 'react-native-json-tree';
 import {styles} from '../styles/app';
+import object2Map from '../utils/object2Map';
 
 export const PermissionsView = () => {
   const [data, setData] = useState<string | Map<string, any>>('');
@@ -12,6 +13,7 @@ export const PermissionsView = () => {
     hasAllPermissions,
     requestPermissions,
     openHealthConnectSettings,
+    getUserTimeZone,
   } = useRookHCPermissions();
 
   const handlePress = async (): Promise<void> => {
@@ -26,7 +28,16 @@ export const PermissionsView = () => {
   const handlePermissions = async (): Promise<void> => {
     try {
       const result = await hasAllPermissions();
-      setData(`has permissions ${result}`);
+      setData(`has timezone ${result}`);
+    } catch (error) {
+      setData(`${error}`);
+    }
+  };
+
+  const handleTimezone = async (): Promise<void> => {
+    try {
+      const result = await getUserTimeZone();
+      setData(object2Map(result));
     } catch (error) {
       setData(`${error}`);
     }
@@ -72,6 +83,12 @@ export const PermissionsView = () => {
       <TouchableWithoutFeedback onPress={handleOpen}>
         <View style={styles.buttonTouch}>
           <Text style={styles.buttonText}>openHC</Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handleTimezone}>
+        <View style={styles.buttonTouch}>
+          <Text style={styles.buttonText}>Get User TimeZone</Text>
         </View>
       </TouchableWithoutFeedback>
 

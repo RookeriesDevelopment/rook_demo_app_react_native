@@ -28,6 +28,9 @@ export const TransmissionOptionsView = () => {
       <Link to={{screen: 'Events Transmission'}} style={styles.button}>
         Events
       </Link>
+      <Link to={{screen: 'Timezone Transmission'}} style={styles.button}>
+        Timezone
+      </Link>
     </SafeAreaView>
   );
 };

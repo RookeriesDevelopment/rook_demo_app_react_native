@@ -1,12 +1,12 @@
 import React, {FC, useState} from 'react';
 import {Text, StyleSheet, View, TouchableWithoutFeedback} from 'react-native';
-import {useRookTransmission} from 'react-native-rook-android-transmission';
+import {useRookEventsTransmission} from 'react-native-rook-android-transmission';
 import {useRookHCEvents} from 'react-native-rook-health-connect';
 import {styles as Global} from '../styles/app';
 
 type BodyTransmissionProps = {
   date: string;
-  userID: string | number;
+  userID: string;
 };
 
 export const EventsTransmission: FC<BodyTransmissionProps> = ({
@@ -56,7 +56,7 @@ export const EventsTransmission: FC<BodyTransmissionProps> = ({
     enqueueTemperatureEvent,
     clearQueuedTemperatureEvents,
     uploadTemperatureEvents,
-  } = useRookTransmission({userID});
+  } = useRookEventsTransmission({userID});
 
   const [response, setResponse] = useState('{}');
 

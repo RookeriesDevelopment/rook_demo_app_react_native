@@ -6,7 +6,7 @@ import {styles} from '../styles/app';
 
 type BodyTransmissionProps = {
   date: string;
-  userID: string | number;
+  userID: string;
 };
 
 export const BodyTransmission: FC<BodyTransmissionProps> = ({date, userID}) => {

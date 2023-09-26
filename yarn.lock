@@ -5930,17 +5930,17 @@ react-native-json-tree@^1.3.0:
     prop-types "^15.7.2"
     react-base16-styling "^0.8.0"
 
-react-native-rook-android-transmission@^0.2.5:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/react-native-rook-android-transmission/-/react-native-rook-android-transmission-0.2.5.tgz#48e66ed671d6ced17b6351845cdf180a8be11df9"
-  integrity sha512-fXh2V/rO+VmHA1ISK7J6O7nQQhRac38/QwyjZqEmlqlLbXTRqCpPBuexhrUIk2dVazeQz0om1Eu6dL0aYeqFNw==
+react-native-rook-android-transmission@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-rook-android-transmission/-/react-native-rook-android-transmission-0.3.0.tgz#dfc090e8ccd2fbfae07cf2e266e96107abaa0c7f"
+  integrity sha512-teMNw/O/thcJkwvAZi/RwxIsB5SlVl21MecP+JoYha1iUqEogNK2SzUOAUg1Zeuu1zQM7saiq5zQc0wk1gwg1Q==
   dependencies:
     rook_auth "^0.4.2"
 
-react-native-rook-health-connect@^0.2.7:
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/react-native-rook-health-connect/-/react-native-rook-health-connect-0.2.7.tgz#caf710e78b34eaeb647c06b33dcc0c6bb7794639"
-  integrity sha512-M6B/XSpwMRmpbzu1FWGRbBaPQSr4WYf7fo7MbH236Jk84oAq4TX4ovoGPK92onY1IqMUk72xiaQl3Hh0ddPQOA==
+react-native-rook-health-connect@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-rook-health-connect/-/react-native-rook-health-connect-0.3.0.tgz#f68f8331787c8bf6cddc38720b615ad2391570a1"
+  integrity sha512-Ye7lLsQRtEIGRgh/EsKaTohgIK1Wzkg9eSYx3w7kqrkYDrUoUMJgpSocfN27atJW1EVWfvAhRYXyW0qUIk3mJA==
   dependencies:
     rook_auth "^0.4.2"
 
@@ -6243,21 +6243,6 @@ rook_auth@^0.4.2:
     "@react-native-async-storage/async-storage" "^1.17.11"
     axios "^1.3.4"
     react-native-shared-preferences "^1.0.2"
-
-rook_health_connect@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/rook_health_connect/-/rook_health_connect-0.2.4.tgz#5c418a7b32687cc52e620bbc48d3384a5c3d6d37"
-  integrity sha512-QxxeXVE6EAm9zQ9WnpxTjzhoCvH7bnLl1dcdwGQ6F1NmFi27skfS5lfZ+rhO/VhjUjI1Z53ql0vUi4QNE5MShA==
-  dependencies:
-    "@react-native-async-storage/async-storage" "^1.17.11"
-    rook_auth "^0.4.2"
-
-rook_transmission@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/rook_transmission/-/rook_transmission-0.1.2.tgz#2c89e0763f842b9455911a04fd7c44a87d51b504"
-  integrity sha512-ADqGkNndeRb1S2p8C9iXxvfe828VdIuRkURNJqAId4cAUUgMH7f72sIWEWrGux+aZXMg3lxO6EX2q0xA/iR11Q==
-  dependencies:
-    rook_auth "^0.4.2"
 
 rook_users@^0.1.3:
   version "0.1.3"

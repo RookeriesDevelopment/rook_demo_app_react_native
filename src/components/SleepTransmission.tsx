@@ -6,7 +6,7 @@ import {styles} from '../styles/app';
 
 type SleepTransmissionProps = {
   date: string;
-  userID: string | number;
+  userID: string;
 };
 
 export const SleepTransmission: FC<SleepTransmissionProps> = ({
