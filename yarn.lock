@@ -5936,10 +5936,10 @@ react-native-mmkv@^2.10.2:
   resolved "https://registry.yarnpkg.com/react-native-mmkv/-/react-native-mmkv-2.10.2.tgz#73f06bb710388f67bade031e7b8e42a6d2358e40"
   integrity sha512-hNrZzwvIFyogJkqf//rVSw7EwceYqkx/jl3hb5tzct6qqwEmS1L9ybvnDjzDkaMyDeouQIqAnsdnb6AuDSrgQQ==
 
-react-native-rook-android-transmission@^0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/react-native-rook-android-transmission/-/react-native-rook-android-transmission-0.4.3.tgz#398679ee18fea33986005f4a0e74a7150d5ded8f"
-  integrity sha512-HZbAPZHTVRsESE/olMpr6Hi/zdmRvvENOV/Pit7+Qm2YbW8a+xd5JuM7mt0uBRQ9OVDUKjqvJ8CvX+oq9gb9BA==
+react-native-rook-android-transmission@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/react-native-rook-android-transmission/-/react-native-rook-android-transmission-0.4.4.tgz#db0004bbec1293bb849d6029add7d9b3cf41e8cd"
+  integrity sha512-8i+MMWZ3gp8NyDms2gvMOob3Tid75NkQe594Q6LsenSqGGCmaujQXEud/lxiuoHVtl8SqYo3/y4RxjJ3wRtG2w==
   dependencies:
     react-native-rook-logger-react-native "^0.2.7"
     rook_auth "^0.6.0"
