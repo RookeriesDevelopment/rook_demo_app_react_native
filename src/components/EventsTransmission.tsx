@@ -19,10 +19,8 @@ export const EventsTransmission: FC<BodyTransmissionProps> = ({
     getBodyMetricsEvents,
     getBodyHeartRateEvents,
     getBodyHydrationEvents,
-    getBodyMoodEvents,
     getBodyNutritionEvents,
     getBodyOxygenationEvents,
-    getPhysicalStressEvents,
     getBodyTemperatureEvents,
   } = useRookHCEvents();
   const {
@@ -41,18 +39,12 @@ export const EventsTransmission: FC<BodyTransmissionProps> = ({
     enqueueHydrationEvent,
     clearQueuedHydrationEvents,
     uploadHydrationEvents,
-    enqueueMoodEvent,
-    clearQueuedMoodEvents,
-    uploadMoodEvents,
     enqueueNutritionEvent,
     clearQueuedNutritionEvents,
     uploadNutritionEvents,
     enqueueOxygenationEvent,
     clearQueuedOxygenationEvents,
     uploadOxygenationEvents,
-    enqueueStressEvent,
-    clearQueuedStressEvents,
-    uploadStressEvents,
     enqueueTemperatureEvent,
     clearQueuedTemperatureEvents,
     uploadTemperatureEvents,
@@ -219,38 +211,6 @@ export const EventsTransmission: FC<BodyTransmissionProps> = ({
     }
   };
 
-  const handleMQ = async (): Promise<void> => {
-    try {
-      const result = await getBodyMoodEvents(date);
-
-      const r = await enqueueMoodEvent(result);
-
-      setResponse(`Enqueue: ${r}`);
-    } catch (error) {
-      setResponse(`${error}`);
-    }
-  };
-
-  const handleClearMQ = async (): Promise<void> => {
-    try {
-      const r = await clearQueuedMoodEvents();
-
-      setResponse(`clear: ${r}`);
-    } catch (error) {
-      setResponse(`${error}`);
-    }
-  };
-
-  const handleUploadMQ = async (): Promise<void> => {
-    try {
-      const r = await uploadMoodEvents();
-
-      setResponse(`Upload: ${r}`);
-    } catch (error) {
-      setResponse(`${error}`);
-    }
-  };
-
   const handleNQ = async (): Promise<void> => {
     try {
       const result = await getBodyNutritionEvents(date);
@@ -308,38 +268,6 @@ export const EventsTransmission: FC<BodyTransmissionProps> = ({
   const handleUploadOQ = async (): Promise<void> => {
     try {
       const r = await uploadOxygenationEvents();
-
-      setResponse(`Upload: ${r}`);
-    } catch (error) {
-      setResponse(`${error}`);
-    }
-  };
-
-  const handleSQ = async (): Promise<void> => {
-    try {
-      const result = await getPhysicalStressEvents(date);
-
-      const r = await enqueueStressEvent(result);
-
-      setResponse(`Enqueue: ${r}`);
-    } catch (error) {
-      setResponse(`${error}`);
-    }
-  };
-
-  const handleClearSQ = async (): Promise<void> => {
-    try {
-      const r = await clearQueuedStressEvents();
-
-      setResponse(`clear: ${r}`);
-    } catch (error) {
-      setResponse(`${error}`);
-    }
-  };
-
-  const handleUploadSQ = async (): Promise<void> => {
-    try {
-      const r = await uploadStressEvents();
 
       setResponse(`Upload: ${r}`);
     } catch (error) {
@@ -478,24 +406,6 @@ export const EventsTransmission: FC<BodyTransmissionProps> = ({
       </View>
 
       <View style={styles.row}>
-        <TouchableWithoutFeedback onPress={handleMQ}>
-          <View style={styles.cell}>
-            <Text style={styles.buttonText}>Enqueue Mood Event</Text>
-          </View>
-        </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={handleClearMQ}>
-          <View style={styles.cell}>
-            <Text style={styles.buttonText}>Clear Enqueue Mood Event</Text>
-          </View>
-        </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={handleUploadMQ}>
-          <View style={styles.cell}>
-            <Text style={styles.buttonText}>Upload Enqueue Mood Event</Text>
-          </View>
-        </TouchableWithoutFeedback>
-      </View>
-
-      <View style={styles.row}>
         <TouchableWithoutFeedback onPress={handleNQ}>
           <View style={styles.cell}>
             <Text style={styles.buttonText}>Enqueue Nutrition Event</Text>
@@ -533,24 +443,6 @@ export const EventsTransmission: FC<BodyTransmissionProps> = ({
             <Text style={styles.buttonText}>
               Upload Enqueue Oxygenation Event
             </Text>
-          </View>
-        </TouchableWithoutFeedback>
-      </View>
-
-      <View style={styles.row}>
-        <TouchableWithoutFeedback onPress={handleSQ}>
-          <View style={styles.cell}>
-            <Text style={styles.buttonText}>Enqueue Stress Event</Text>
-          </View>
-        </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={handleClearSQ}>
-          <View style={styles.cell}>
-            <Text style={styles.buttonText}>Clear Enqueue Stress Event</Text>
-          </View>
-        </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={handleUploadSQ}>
-          <View style={styles.cell}>
-            <Text style={styles.buttonText}>Upload Enqueue Stress Event</Text>
           </View>
         </TouchableWithoutFeedback>
       </View>
