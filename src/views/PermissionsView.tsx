@@ -10,7 +10,7 @@ export const PermissionsView = () => {
 
   const {
     checkAvailability,
-    hasAllPermissions,
+    checkPermissions,
     requestPermissions,
     openHealthConnectSettings,
     getUserTimeZone,
@@ -27,8 +27,8 @@ export const PermissionsView = () => {
 
   const handlePermissions = async (): Promise<void> => {
     try {
-      const result = await hasAllPermissions();
-      setData(`has timezone ${result}`);
+      const result = await checkPermissions('ALL');
+      setData(`has all permissions ${result}`);
     } catch (error) {
       setData(`${error}`);
     }
@@ -45,7 +45,7 @@ export const PermissionsView = () => {
 
   const handleRequestPermissions = async (): Promise<void> => {
     try {
-      await requestPermissions();
+      await requestPermissions('ALL');
     } catch (error) {
       setData(`${error}`);
     }
