@@ -17,6 +17,7 @@ import {
   EventsTransmissionView,
   TimezoneTransmissionView,
 } from './src/views';
+import {credentials} from './src/utils/crendentials';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,9 +25,9 @@ function App() {
   return (
     <RookConnectProvider
       keys={{
-        clientUUID: '9593d0ec-47c1-4477-a8ce-10d3f4f43127',
+        clientUUID: credentials.uuid,
         environment: 'sandbox',
-        password: 'YR9GoQ3mP0zey5nZ9w3WHQMvtvFvMdnefblx',
+        password: credentials.password,
       }}>
       <NavigationContainer>
         <Stack.Navigator
